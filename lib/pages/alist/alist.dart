@@ -24,7 +24,7 @@ class AListScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-            title: Obx(() => Text("AList - ${ui.alistVersion.value}")),
+            title: Obx(() => Text("OpenList - ${ui.alistVersion.value}")),
             actions: [
               IconButton(
                 tooltip: S.of(context).desktopShortcut,

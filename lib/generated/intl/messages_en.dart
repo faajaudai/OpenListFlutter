@@ -34,7 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bootAutoStartService":
             MessageLookupByLibrary.simpleMessage("Boot auto-start service"),
         "bootAutoStartServiceDesc": MessageLookupByLibrary.simpleMessage(
-            "Automatically start AList service after boot. (Please make sure to grant auto-start permission)"),
+            "Automatically start OpenList service after boot. (Please make sure to grant auto-start permission)"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "checkForUpdates":
             MessageLookupByLibrary.simpleMessage("Check for updates"),
