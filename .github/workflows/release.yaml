@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download AList Source Code
+      - name: Download OpenList Source Code
         run: |
           cd $GITHUB_WORKSPACE/alist-lib/scripts
           chmod +x *.sh
@@ -43,7 +43,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
-      - name: Build AList
+      - name: Build OpenList
         run: |
             cd $GITHUB_WORKSPACE/alist-lib/scripts
             chmod +x *.sh

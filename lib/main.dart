@@ -101,7 +101,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   NavigationDestination(
                     icon: SvgPicture.asset(
-                      "assets/alist.svg",
+                      "assets/openlist.svg",
                       color: Theme.of(context).hintColor,
                       width: 32,
                       height: 32,

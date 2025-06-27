@@ -39,5 +39,5 @@ class AndroidBridge(private val context: Context) : GeneratedApi.Android {
     override fun isRunning() = AListService.isRunning
 
 
-    override fun getAListVersion() = BuildConfig.ALIST_VERSION
+    override fun getAListVersion() = BuildConfig.OPENLIST_VERSION
 }
