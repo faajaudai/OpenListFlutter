@@ -27,7 +27,7 @@
         tools:ignore="ScopedStorage" />
 
     <application
-        android:name="com.github.suzu008.openlistflutter.App"
+        android:name="com.github.jing332.alistflutter.App"
         android:icon="@mipmap/ic_launcher"
 
         android:label="OpenList"
