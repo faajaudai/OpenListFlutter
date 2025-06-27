@@ -49,6 +49,6 @@ jobs:
       - name: Run workflow release
         if: env.openlist_update == 1 && ( success() || failure() )
         run: |
-          gh workflow run release.yaml -R Suzue008/OpenListFlutter
+          gh workflow run release.yaml -R Suzu008/OpenListFlutter
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
