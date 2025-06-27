@@ -1,12 +1,12 @@
 [![Release](https://github.com/Suzu008/OpenListFlutter/actions/workflows/release.yaml/badge.svg)](https://github.com/Suzu008/OpenListFlutter/actions/workflows/release.yaml)
 [![Test](https://github.com/Suzu008/OpenListFlutter/actions/workflows/build.yaml/badge.svg)](https://github.com/Suzu008/OpenListFlutter/actions/workflows/build.yaml)
-[![CheckAList](https://github.com/Suzu008/OpenListFlutter/actions/workflows/sync_alist.yaml/badge.svg)](https://github.com/Suzu008/OpenListFlutter/actions/workflows/sync_alist.yaml)
+[![CheckAList](https://github.com/Suzu008/OpenListFlutter/actions/workflows/sync_openlist.yaml/badge.svg)](https://github.com/Suzu008/OpenListFlutter/actions/workflows/sync_openlist.yaml)
 
 # OpenListFlutter
 
 OpenListFlutter是一个基于OpenList的Android服务端，Fork自[AlistFlutter](https://github.com/jing332/AListFlutter)，使用Google Flutter作为UI框架。
 
-> [Github Actions](https://github.com/Suzu008/OpenListFlutter/actions/workflows/sync_alist.yaml)
+> [Github Actions](https://github.com/Suzu008/OpenListFlutter/actions/workflows/sync_openlist.yaml)
 > 每日早晚五点钟检查最新的 [OpenList](https://github.com/OpenListTeam/OpenList/releases)
 > 并自动构建APK，发布到 [Release](https://github.com/Suzu008/OpenListFlutter/releases)
 > 中，您只需耐心等待片刻并在应用内检查更新即可。
