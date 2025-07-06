@@ -32,10 +32,8 @@ jobs:
           # 用于测试
           # echo "openlist_update=1" >> $GITHUB_ENV 
 
-          if [ ${{ env.openlist_update }} -eq 0 ]
-          then
+          if [ ${{ env.openlist_update }} -eq 0 ]; then
             echo "无更新"
-          else
           fi
 
       - name: Trigger and Watch Release Workflow
