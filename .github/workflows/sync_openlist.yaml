@@ -36,6 +36,26 @@ jobs:
           then
             echo "无更新"
           else
+          fi
+
+      - name: Trigger and Watch Release Workflow
+        if: ${{ env.openlist_update == 1 }}
+        run: |
+          echo "触发 release.yaml workflow..."
+          gh workflow run release.yaml -R Suzu008/OpenListFlutter
+          sleep 5
+          echo ""
+          RUN_ID=$(gh run list -w release.yaml --limit 1 --json databaseId -q .[0].databaseId)
+          echo "触发的 release workflow 运行 ID: $RUN_ID"
+
+          if [ -z "$RUN_ID" ]; then
+            echo "未能获取 release workflow 运行 ID，放弃提交。"
+            exit 1
+          fi
+
+          echo "等待 release workflow 完成..."
+          if gh run watch $RUN_ID --exit-status; then
+            echo "Release workflow 执行成功，提交 CHANGELOG.md"
             echo -e "[自动同步OpenList] ${{ env.openlist_version }}" > $GITHUB_WORKSPACE/CHANGELOG.md
             echo -e "${{ env.openlist_version }}" > ${{ env.VERSION_FILE }}
 
@@ -44,11 +64,9 @@ jobs:
             git add .
             git commit -m "[bot] Update openlist to ${{ env.openlist_version }}"
             git push
+          else
+            echo "Release workflow 失败，放弃提交 CHANGELOG.md"
+            exit 1
           fi
-
-      - name: Run workflow release
-        if: env.openlist_update == 1 && ( success() || failure() )
-        run: |
-          gh workflow run release.yaml -R Suzu008/OpenListFlutter
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
