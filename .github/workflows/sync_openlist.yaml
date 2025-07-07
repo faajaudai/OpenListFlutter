@@ -24,50 +24,17 @@ jobs:
           touch ${{ env.VERSION_FILE }}
           ./check_openlist.sh
 
-      - name: Shell
+      - name: Check for OpenList Update
         run: |
           echo "openlist_version=${{ env.openlist_version }}"
           echo "openlist_update=${{ env.openlist_update }}" 
-
-          # 用于测试
-          # echo "openlist_update=1" >> $GITHUB_ENV 
 
           if [ ${{ env.openlist_update }} -eq 0 ]
           then
             echo "无更新"
           else
-            echo "更新本地 openlist_version ${{ env.openlist_version }}"
-            echo -e "[自动同步OpenList] ${{ env.openlist_version }}" > $GITHUB_WORKSPACE/CHANGELOG.md
-            echo -e "${{ env.openlist_version }}" > ${{ env.VERSION_FILE }}
-          fi
-
-      - name: Trigger and Watch Release Workflow
-        if: ${{ env.openlist_update == 1 }}
-        run: |
-          echo "触发 release.yaml workflow..."
-          gh workflow run release.yaml -R Suzu008/OpenListFlutter
-          sleep 5
-          echo ""
-          RUN_ID=$(gh run list -w release.yaml --limit 1 --json databaseId -q .[0].databaseId)
-          echo "触发的 release workflow 运行 ID: $RUN_ID"
-
-          if [ -z "$RUN_ID" ]; then
-            echo "未能获取 release workflow 运行 ID，放弃提交。"
-            exit 1
-          fi
-
-          echo "等待 release workflow 完成..."
-          if gh run watch $RUN_ID --exit-status; then
-            echo "Release workflow 执行成功，提交 CHANGELOG.md"
-
-            git config user.name "github-actions"
-            git config user.email "93746390+Suzu008@users.noreply.github.com"
-            git add .
-            git commit -m "[bot] Update openlist to ${{ env.openlist_version }}"
-            git push
-          else
-            echo "Release workflow 失败，放弃提交 CHANGELOG.md"
-            exit 1
+            echo "触发 release.yaml workflow..."
+            gh workflow run release.yaml -R Suzu008/OpenListFlutter -f openlist_version=${{ env.openlist_version }}
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  

@@ -20,6 +20,27 @@ jobs:
           ./init_alist.sh
           ./init_web.sh
 
+      - name: Check OpenList Version
+        run: |
+          cd $GITHUB_WORKSPACE/.github/scripts
+          chmod +x ./*.sh
+          touch $GITHUB_WORKSPACE/openlist_version
+          ./check_openlist.sh
+        env:
+          VERSION_FILE: ${{ github.workspace }}/openlist_version
+
+      - name: Update OpenList Version and Changelog
+        run: |
+          if [ ${{ env.openlist_update }} -eq 0 ]
+          then
+            echo "无更新"
+            exit 0
+          else
+            echo "更新本地 openlist_version ${{ env.openlist_version }}"
+            echo -e "[自动同步OpenList] ${{ env.openlist_version }}" > $GITHUB_WORKSPACE/CHANGELOG.md
+            echo -e "${{ env.openlist_version }}" > $GITHUB_WORKSPACE/openlist_version
+          fi
+
       - uses: actions/setup-go@v5
         with:
           go-version: 1.22
@@ -79,6 +100,16 @@ jobs:
       - name: Init APP Version Name
         run: |
           echo "ver_name=$(grep -m 1 'versionName' ${{ env.output }}/output-metadata.json | cut -d\" -f4)" >> $GITHUB_ENV
+
+      - name: Commit Changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "93746390+Suzu008@users.noreply.github.com"
+          git add .
+          git commit -m "Update OpenList to ${{ env.openlist_version }}"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: softprops/action-gh-release@v1
         with:
