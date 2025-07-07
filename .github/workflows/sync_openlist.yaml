@@ -32,8 +32,13 @@ jobs:
           # 用于测试
           # echo "openlist_update=1" >> $GITHUB_ENV 
 
-          if [ ${{ env.openlist_update }} -eq 0 ]; then
+          if [ ${{ env.openlist_update }} -eq 0 ]
+          then
             echo "无更新"
+          else
+            echo "更新本地 openlist_version ${{ env.openlist_version }}"
+            echo -e "[自动同步OpenList] ${{ env.openlist_version }}" > $GITHUB_WORKSPACE/CHANGELOG.md
+            echo -e "${{ env.openlist_version }}" > ${{ env.VERSION_FILE }}
           fi
 
       - name: Trigger and Watch Release Workflow
@@ -54,8 +59,6 @@ jobs:
           echo "等待 release workflow 完成..."
           if gh run watch $RUN_ID --exit-status; then
             echo "Release workflow 执行成功，提交 CHANGELOG.md"
-            echo -e "[自动同步OpenList] ${{ env.openlist_version }}" > $GITHUB_WORKSPACE/CHANGELOG.md
-            echo -e "${{ env.openlist_version }}" > ${{ env.VERSION_FILE }}
 
             git config user.name "github-actions"
             git config user.email "93746390+Suzu008@users.noreply.github.com"
