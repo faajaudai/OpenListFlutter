@@ -20,7 +20,10 @@ OpenListFlutter是一个基于OpenList的Android服务端，Fork自[AlistFlutter
 ### 关于IOS
 理论上 [Gomobile](https://pkg.go.dev/golang.org/x/mobile/cmd/gomobile?utm_source=godoc#hdr-Build_a_library_for_Android_and_iOS) 支持IOS，但由于本人无IOS相关开发设备，故无法支持。
 
-# Download
+## Download
 
-- [Github Action (DEV)](https://github.com/Suzu008/OpenListFlutter/actions/workflows/build.yaml) 开发版
+- [最新Release](https://github.com/Suzu008/OpenListFlutter/releases/latest) 
 
+## 类似的其他开源软件代替。
+- https://github.com/LeoHaoVIP/AListLiteAndroid
+- https://github.com/OpenListApp/OpenListApp
