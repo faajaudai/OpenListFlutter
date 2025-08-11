@@ -50,7 +50,6 @@ class OpenListTileService : TileService() {
             startService(Intent(this, AListService::class.java).apply {
                 action = AListService.ACTION_SHUTDOWN
             })
-            toast(getString(R.string.alist_shut_downing))
         } else {
             // 显式启动，确保在应用未运行时也能启动服务
             val serviceIntent = Intent(this, AListService::class.java)
@@ -61,7 +60,6 @@ class OpenListTileService : TileService() {
             } else {
                 startService(serviceIntent)
             }
-            toast(getString(R.string.alist_starting))
         }
         
     }

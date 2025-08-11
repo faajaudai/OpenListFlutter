@@ -121,6 +121,7 @@ class AListService : Service(), AList.Listener {
 
     private fun startOrShutdown() {
         if (isRunning) {
+            toast(getString(R.string.alist_shut_downing))
             AList.shutdown()
         } else {
             toast(getString(R.string.alist_starting))
