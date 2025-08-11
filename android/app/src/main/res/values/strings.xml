@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AList</string>
+    <string name="app_name">OpenList</string>
 
     <string name="open_source_license">开源许可</string>
     <string name="back">返回</string>
@@ -23,8 +23,8 @@
     <string name="alist_config">OpenList配置</string>
     <string name="settings">设置</string>
     <string name="password">密码</string>
-    <string name="alist_starting">启动中</string>
-    <string name="alist_shut_downing">关闭中</string>
+    <string name="alist_starting">OpenList启动中</string>
+    <string name="alist_shut_downing">OpenList关闭中</string>
     <string name="app_switch">开关</string>
     <string name="moreOptions">更多选项</string>
     <string name="about">关于</string>

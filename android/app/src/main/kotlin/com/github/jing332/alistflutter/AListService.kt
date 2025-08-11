@@ -120,7 +120,7 @@ class AListService : Service(), AList.Listener {
         if (isRunning) {
             AList.shutdown()
         } else {
-            toast(getString(R.string.starting))
+            toast(getString(R.string.alist_starting))
             isRunning = true
             AList.startup()
             notifyStatusChanged()
@@ -193,11 +193,7 @@ class AListService : Service(), AList.Listener {
             chan.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
             val service = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             service.createNotificationChannel(chan)
-            smallIconRes = when ((0..1).random()) {
-                0 -> R.drawable.server
-                1 -> R.drawable.server2
-                else -> R.drawable.server2
-            }
+            smallIconRes = R.drawable.openlist_logo
 
             builder.setChannelId(NOTIFICATION_CHAN_ID)
         } else {
