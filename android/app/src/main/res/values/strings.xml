@@ -36,6 +36,10 @@
     <string name="path_copied">路径已复制</string>
     <string name="check_update">检查更新</string>
     <string name="start">启动</string>
+    <string name="start_service">启动服务</string>
+    <string name="start_alist_service">启动OpenList服务</string>
+    <string name="stop_service">停止服务</string>
+    <string name="stop_alist_service">停止OpenList服务</string>
     <string name="all_files_manage_permission">所有文件访问权限</string>
     <string name="files_permission_desc">挂载本地存储时必须打开，否则无权限读写文件。</string>
     <string name="read_external_storage_permission">读取存储权限</string>

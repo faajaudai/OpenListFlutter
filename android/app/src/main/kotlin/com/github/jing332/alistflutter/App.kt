@@ -16,5 +16,8 @@ class App : FlutterApplication() {
         super.onCreate()
 
         app = this
+        
+        // Initialize shortcuts based on current service state
+        com.github.jing332.alistflutter.model.ShortCuts.updateShortcutsBasedOnServiceState(this)
     }
 }

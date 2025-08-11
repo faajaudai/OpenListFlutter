@@ -16,6 +16,7 @@ import android.os.IBinder
 import android.os.PowerManager
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.github.jing332.alistflutter.config.AppConfig
+import com.github.jing332.alistflutter.model.ShortCuts
 import com.github.jing332.alistflutter.model.alist.AList
 import com.github.jing332.alistflutter.utils.AndroidUtils.registerReceiverCompat
 import com.github.jing332.alistflutter.utils.ClipboardUtils
@@ -91,6 +92,7 @@ class AListService : Service(), AList.Listener {
         )
 
         AList.addListener(this)
+        updateShortcuts()
     }
 
 
@@ -113,6 +115,7 @@ class AListService : Service(), AList.Listener {
         if (!AList.isRunning()) {
             isRunning = false
             notifyStatusChanged()
+            updateShortcuts()
         }
     }
 
@@ -124,6 +127,7 @@ class AListService : Service(), AList.Listener {
             isRunning = true
             AList.startup()
             notifyStatusChanged()
+            updateShortcuts()
         }
     }
 
@@ -131,6 +135,10 @@ class AListService : Service(), AList.Listener {
         startOrShutdown()
 
         return super.onStartCommand(intent, flags, startId)
+    }
+
+    private fun updateShortcuts() {
+        ShortCuts.updateShortcutsBasedOnServiceState(this)
     }
 
     inner class MyReceiver : BroadcastReceiver() {
