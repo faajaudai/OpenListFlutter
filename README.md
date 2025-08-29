@@ -1,3 +1,10 @@
+# 项目停止维护，推荐使用 [OpenListTeam/OpenList-Mobile](https://github.com/OpenListTeam/OpenList-Mobile/)
+
+该项目已停止维护，自动构建暂时还不会关闭；
+
+OpenList 已经推出了官方的 Flutter 版本 [OpenListTeam/OpenList-Mobile](https://github.com/OpenListTeam/OpenList-Mobile/)， 推荐使用这个版本~
+
+---
 [![Release](https://github.com/Suzu008/OpenListFlutter/actions/workflows/release.yaml/badge.svg)](https://github.com/Suzu008/OpenListFlutter/actions/workflows/release.yaml)
 [![Test](https://github.com/Suzu008/OpenListFlutter/actions/workflows/build.yaml/badge.svg)](https://github.com/Suzu008/OpenListFlutter/actions/workflows/build.yaml)
 [![CheckAList](https://github.com/Suzu008/OpenListFlutter/actions/workflows/sync_openlist.yaml/badge.svg)](https://github.com/Suzu008/OpenListFlutter/actions/workflows/sync_openlist.yaml)
@@ -25,5 +32,6 @@ OpenListFlutter是一个基于OpenList的Android服务端，Fork自[AlistFlutter
 - [最新Release](https://github.com/Suzu008/OpenListFlutter/releases/latest) 
 
 ## 类似的其他开源软件代替。
+- https://github.com/OpenListTeam/OpenList-Mobile
 - https://github.com/LeoHaoVIP/AListLiteAndroid
 - https://github.com/OpenListApp/OpenListApp

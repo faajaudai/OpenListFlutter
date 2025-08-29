@@ -37,7 +37,7 @@ jobs:
             exit 0
           else
             echo "更新本地 openlist_version ${{ env.openlist_version }}"
-            echo -e "[自动同步OpenList] ${{ env.openlist_version }}" > $GITHUB_WORKSPACE/CHANGELOG.md
+            echo -e "[自动同步OpenList] ${{ env.openlist_version }}\n项目已停止维护，推荐使用OpenList官方Flutter应用[OpenListTeam/OpenList-Mobile](https://github.com/OpenListTeam/OpenList-Mobile/)" > $GITHUB_WORKSPACE/CHANGELOG.md
             echo -e "${{ env.openlist_version }}" > $GITHUB_WORKSPACE/openlist_version
           fi
 
