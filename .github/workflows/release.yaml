@@ -101,23 +101,24 @@ jobs:
         run: |
           echo "ver_name=$(grep -m 1 'versionName' ${{ env.output }}/output-metadata.json | cut -d\" -f4)" >> $GITHUB_ENV
 
-      - name: Commit Changes
-        run: |
-          git config user.name "github-actions"
-          git config user.email "93746390+Suzu008@users.noreply.github.com"
-          git add .
-          git commit --allow-empty -m "Update OpenList to ${{ env.openlist_version }}"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: softprops/action-gh-release@v1
+      - name: Upload App To Artifact arm64-v8a
+        if: success () || failure ()
+        uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.ver_name }}
-          tag_name: ${{ env.ver_name }}
-          body_path: ${{ github.workspace }}/CHANGELOG.md
-          draft: false
-          prerelease: false
-          files: ${{ env.output }}/*.apk
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          name: "OpenListFlutter-v${{ env.ver_name }}_arm64-v8a"
+          path: "${{ env.output }}/*-v8a.apk"
+
+      - name: Upload App To Artifact arm-v7a
+        if: success () || failure ()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "OpenListFlutter-v${{ env.ver_name }}_arm-v7a"
+          path: "${{ env.output }}/*-v7a.apk"
+
+      - name: Upload App To Artifact x86
+        if: success () || failure ()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "OpenListFlutter-v${{ env.ver_name }}_x86_64"
+          path: "${{ env.output }}/*64.apk"
