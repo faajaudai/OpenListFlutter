@@ -33,8 +33,8 @@ jobs:
           then
             echo "无更新"
           else
-            echo "触发 release.yaml workflow..."
-            gh workflow run release.yaml -R Suzu008/OpenListFlutter
+            echo "触发 build.yaml workflow..."
+            gh workflow run release.yaml -R faajaudai/OpenListFlutter
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
